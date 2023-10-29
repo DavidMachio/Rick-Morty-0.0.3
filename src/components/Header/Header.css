@@ -1,10 +1,64 @@
 header {
-  height: 100px;
+  height: 80px;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background-color: inherit;
+  box-shadow: 0 0 12px black;
+  margin-bottom: 20px;
 }
 header > img {
-  height: 70%;
+  height: 70px;
+}
+.header-nav {
+  display: flex;
+  gap: 10px;
+}
+.header-ul {
+  display: flex;
+  gap: 10px;
+}
+.button-theme {
+  position: relative;
+  border: 1px solid;
+  height: 22px;
+  border-radius: 11px;
+  width: 45px;
+  padding: 1px;
+}
+.sun {
+  position: absolute;
+  z-index: 10;
+  left: 1px;
+  background-color: var(--secondary);
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--secondary);
+  transition: all 0.3s ease-in-out;
+}
+.moon {
+  position: absolute;
+  z-index: 10;
+  left: 24px;
+  background-color: var(--primary);
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--primary);
+  transition: all 0.3s ease-in-out;
+}
+.luna {
+  font-size: 15px;
+  position: absolute;
+  bottom: -2px;
+  right: 2px;
+}
+.sol {
+  font-size: 15px;
+  position: absolute;
+  bottom: -2px;
+  left: 2px;
 }

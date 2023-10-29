@@ -1,12 +1,19 @@
 :root {
-  --primary: rgb(31, 31, 31);
+  --primary: rgb(91, 91, 91);
   --secondary: rgb(240, 240, 240);
   --tertiary: rgb(109, 249, 16);
   --fourth: rgb(109, 249, 16);
+  font-family: "Poppins", sans-serif;
 }
-body {
+.day {
   color: var(--secondary);
   background-color: var(--primary);
+  transition: all 0.2s ease-in-out;
+}
+.nigh {
+  background-color: var(--secondary);
+  color: var(--primary);
+  transition: all 0.2s ease-in-out;
 }
 * {
   padding: 0;

@@ -1,80 +1,98 @@
 import { useState, useEffect } from "react";
-import { useDebounce } from "use-debounce"
-import "./Seeker.css"
+import { useDebounce } from "use-debounce";
+import "./Seeker.css";
 import axios from "axios";
-
 
 const Seeker = () => {
   const [inputValue, setInputValue] = useState("");
   const [value] = useDebounce(inputValue, 700);
-  const [characters, setCharacters] = useState([])
-  const [pageNum, setPageNum] = useState(1)
+  const [characters, setCharacters] = useState([]);
+  const [pageNum, setPageNum] = useState(1);
   const [error, setError] = useState(false);
 
   const searchCharacter = async () => {
-    setError(false)
+    setError(false);
     try {
-      const res = await axios.get(`https://rickandmortyapi.com/api/character?name=${value}`)
-      console.log(res)
-      setCharacters(res.data.results);
+      const res = await axios.get(
+        `https://rickandmortyapi.com/api/character?name=${value}&page=${pageNum}`
+      );
+      console.log(res);
+      setCharacters([...characters, ...res.data.results]);
+      window.addEventListener("scroll", handleScroll);
     } catch (error) {
-      setError(true)
+      setError(true);
     }
-
+  };
+  const searchOneCharacter = async () => {
+    setError(false);
+    try {
+      const res = await axios.get(
+        `https://rickandmortyapi.com/api/character?name=${value}`
+      );
+      console.log(res);
+      setCharacters([...res.data.results]);
+      setInputValue("")
+    } catch (error) {
+      setError(true);
+    }
   };
   const handleScroll = () => {
-    if (
-      window.innerHeight + document.documentElement.scrollTop !==
-      document.documentElement.offsetHeight
-    ) {
-      return;
+    if (window.innerHeight + window.scrollY + 100 >= document.documentElement.offsetHeight) {
+      console.log("Hola");
+      setPageNum(pageNum + 1);
     }
-    setPageNum(pageNum + 1);
+  };
+  const handleSearchClick = () => {
+    searchOneCharacter();
   };
 
-
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
     searchCharacter();
-
-
-  }, [value, pageNum])
-
-
+    searchOneCharacter
+  }, [pageNum]);
 
 
   return (
     <main>
       <div className="search">
-        <input type="text"
+        <input
+          type="text"
           placeholder="Character name..."
           value={inputValue}
           onInput={(ev) => setInputValue(ev.target.value)} />
+        <button className="filter" onClick={handleSearchClick}>Buscar</button>
       </div>
       {error ? (
         <div className="error">
-          <img className="not-exist" src="https://i.redd.it/2e99wgj1lei31.jpg" alt="Paceholder Rick&Morty" />
+          <img
+            className="not-exist"
+            src="https://i.redd.it/2e99wgj1lei31.jpg"
+            alt="Paceholder Rick&Morty"
+          />
           <h2>No existe este personaje</h2>
         </div>
       ) : (
         <section className="results">
           {characters.map((char) => (
             <div key={char.id} className="card">
-              <h3>{char.name}</h3>
-              <div className="dates">
+              <div className="name">
+                <h2>{char.name}</h2>
+
+              </div>
+              <div className="card-dates">
                 <img src={char.image} alt={char.name} />
-                <h4> Origen: {char.origin.name}</h4>
-                <h4>Especie: {char.species}</h4>
-                <h4>Estado: {char.status}</h4>
+                <div className="dates">
+                  <h3>{char.status}</h3>
+                  <h4><span>Specie:</span> {char.species}</h4>
+                  <h4><span>Origen:</span> {char.origin.name}</h4>
+                  <h4><span>Location:</span> {char.location.name}</h4>
+                </div>
               </div>
             </div>
-
           ))}
-
-
         </section>
       )}
     </main>
-  )
-}
+  );
+};
 export default Seeker;
