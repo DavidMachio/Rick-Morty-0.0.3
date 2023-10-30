@@ -16,11 +16,14 @@ const Seeker = () => {
       const res = await axios.get(
         `https://rickandmortyapi.com/api/character?name=${value}&page=${pageNum}`
       );
+      if (!res.data.error) {
+        setCharacters([...characters, ...res.data.results]);
+        window.addEventListener("scroll", handleScroll);
+      }
       console.log(res);
-      setCharacters([...characters, ...res.data.results]);
-      window.addEventListener("scroll", handleScroll);
+
     } catch (error) {
-      setError(true);
+      //setError(true);
     }
   };
   const searchOneCharacter = async () => {
@@ -31,7 +34,6 @@ const Seeker = () => {
       );
       console.log(res);
       setCharacters([...res.data.results]);
-      setInputValue("")
     } catch (error) {
       setError(true);
     }
