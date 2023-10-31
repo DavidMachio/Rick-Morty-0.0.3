@@ -109,3 +109,19 @@ span {
   font-size: 12px;
   gap: 5px;
 }
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    scale: 103%;
+  }
+  to {
+    opacity: 1;
+    scale: 100%;
+  }
+}
+.card {
+  animation: ease-in-out reveal 0.7s;
+  animation-timeline: scroll();
+  animation: entry 50% cover 20%;
+}

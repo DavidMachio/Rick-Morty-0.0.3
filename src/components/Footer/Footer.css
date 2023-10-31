@@ -2,5 +2,4 @@ footer {
   height: 50px;
   display: grid;
   place-items: center;
-  color: var(--fourth);
 }

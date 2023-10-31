@@ -50,8 +50,7 @@ const Seeker = () => {
 
   useEffect(() => {
     searchCharacter();
-    searchOneCharacter
-  }, [pageNum]);
+  }, [value, pageNum]);
 
 
   return (
@@ -77,10 +76,10 @@ const Seeker = () => {
         <section className="results">
           {characters.map((char) => (
             <div key={char.id} className="card">
-              <div className="name">
-                <h2>{char.name}</h2>
 
-              </div>
+              <h2 className="name">{char.name}</h2>
+
+
               <div className="card-dates">
                 <img src={char.image} alt={char.name} />
                 <div className="dates">
