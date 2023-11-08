@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Header.css"
+import { NavLink } from "react-router-dom";
 
 const Header = ({ action }) => {
 
@@ -17,13 +18,13 @@ const Header = ({ action }) => {
       <nav className="header-nav">
         <ul className="header-ul">
           <li>
-            <a href="/">Home</a>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <a href="/all">All</a>
+            <NavLink to="/seeker">All</NavLink>
           </li>
           <li>
-            <a href="/search">Search</a>
+            <NavLink to="/name">Name</NavLink>
           </li>
         </ul>
         <div className="button-theme" onClick={moveButton}>

@@ -1,9 +1,9 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
 import { useState } from 'react'
 import './App.css'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
-import Seeker from './pages/Seeker/Seeker'
+import { Outlet } from 'react-router-dom'
 
 const App = () => {
   const [theme, setTheme] = useState(true)
@@ -15,7 +15,7 @@ const App = () => {
   return (
     <div className={theme == true ? "day" : "night"}>
       <Header action={changeTheme} />
-      <Seeker />
+      <Outlet />
       <Footer />
     </div>
   )

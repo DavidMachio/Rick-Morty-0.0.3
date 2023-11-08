@@ -1,7 +1,7 @@
 :root {
-  --primary: rgb(91, 91, 91);
+  --primary: rgb(32, 32, 32);
   --secondary: rgb(240, 240, 240);
-  --tertiary: rgb(109, 249, 16);
+  --tertiary: rgb(65, 161, 0);
   --fourth: rgb(109, 249, 16);
   font-family: "Poppins", sans-serif;
 }
@@ -13,7 +13,6 @@
 .nigh {
   background-color: var(--secondary);
   color: var(--primary);
-  transition: all 0.2s ease-in-out;
 }
 * {
   padding: 0;
@@ -26,4 +25,8 @@ a {
 }
 li {
   list-style: none;
+}
+.active {
+  text-decoration: underline;
+  color: var(--tertiary);
 }

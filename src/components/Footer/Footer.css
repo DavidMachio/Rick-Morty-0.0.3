@@ -2,4 +2,8 @@ footer {
   height: 50px;
   display: grid;
   place-items: center;
+  position: relative;
+  z-index: 100;
+  background-color: inherit;
+  box-shadow: 0 0 12px black;
 }

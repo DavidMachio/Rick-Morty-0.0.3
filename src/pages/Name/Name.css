@@ -1,0 +1,59 @@
+.main-name {
+  width: 100vw;
+  min-height: calc(100vh - 150px);
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  text-align: center;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+.sticker {
+  position: relative;
+  height: 400px;
+}
+.your-name {
+  width: 100vw;
+  position: relative;
+  margin: auto;
+  font-family: "RickyMorty";
+  font-size: 60px;
+  color: rgb(15, 177, 123);
+  text-shadow: 8px 2px 0 #d1ff2c, 2px -15px 0 #d1ff2c, -8px 2px 0 #d1ff2c,
+    -5px -5px 0 #d1ff2c, 2px 0px 0 #d1ff2c, 0px 8px 0 #d1ff2c,
+    -5px 0px 0 #d1ff2c, 0px -15px 0 #d1ff2c;
+}
+.img-sticker {
+  position: relative;
+  height: 380px;
+  width: auto;
+  object-fit: cover;
+  margin-bottom: -40px;
+}
+@font-face {
+  font-family: "RickyMorty";
+  src: url(../../assets/fonts/get_schwifty.ttf);
+}
+.enter-name {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid;
+  background-color: inherit;
+  color: inherit;
+  text-transform: uppercase;
+}
+.enter-name::placeholder {
+  color: inherit;
+  text-transform: capitalize;
+  text-align: center;
+}
+.enter-name:focus {
+  outline: none;
+  box-shadow: 0 0 10px black;
+  scale: 102%;
+}
